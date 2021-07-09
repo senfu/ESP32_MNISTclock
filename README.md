@@ -13,4 +13,4 @@ This branch is for development. I will implement workable WiFi/BLE connection ma
 - [ ] weather info fetching (wireless.h)
 - [ ] e-paper display for weather (display.h)
 - [ ] WiFi eduroam connection (wireless.h)
-- [ ] global constant management (global.h)
+- [x] global constant management (global.h)

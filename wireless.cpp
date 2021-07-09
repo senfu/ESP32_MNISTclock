@@ -2,19 +2,12 @@
  * @Author: Li Junyan 
  * @Date: 2021-07-08 23:47:18 
  * @Last Modified by: Li Junyan
- * @Last Modified time: 2021-07-09 00:54:51
+ * @Last Modified time: 2021-07-09 16:53:42
  */
 
 #include "wireless.h"
 
-const char* wifi_ssid = "HONOR_LJY";
-const char* wifi_password = "ljy886622";
-const char* ntp_server = "pool.ntp.org";
-// China is GMT+8
-const int gmtOffset_sec = 8 * 3600;
-const int daylightOffset_sec = 0;
-
-bool connect(int timeout_s) {
+bool connect(int timeout_s, const char* wifi_ssid, const char* wifi_password) {
     auto start_time = millis();
     WiFi.begin(wifi_ssid, wifi_password);
     while (WiFi.status() != WL_CONNECTED) {
@@ -39,6 +32,6 @@ bool disconnect() {
 }
 
 bool syncLocalTime() {
-    configTime(gmtOffset_sec, daylightOffset_sec, ntp_server);
+    configTime(GMT_OFFSET_SEC, DAYLIGHT_OFFSET_SEC, NTP_SERVER);
     Serial.println("Local time synced...");
 }

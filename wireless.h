@@ -2,13 +2,12 @@
  * @Author: Li Junyan 
  * @Date: 2021-07-08 23:45:29 
  * @Last Modified by: Li Junyan
- * @Last Modified time: 2021-07-09 00:46:54
+ * @Last Modified time: 2021-07-09 16:52:15
  */
 
-#ifndef WIRELESS_H_
-#define WIRELESS_H_
+#pragma once
 #include "WiFi.h"
-bool connect(int timeout_s);
+#include "global.h"
+bool connect(int timeout_s, const char* wifi_ssid, const char* wifi_password);
 bool disconnect();
 bool syncLocalTime();
-#endif  // WIRELESS_H_
