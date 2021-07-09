@@ -9,6 +9,7 @@
 
 bool connect(int timeout_s, const char* wifi_ssid, const char* wifi_password) {
     auto start_time = millis();
+    WiFi.mode(WIFI_STA);
     WiFi.begin(wifi_ssid, wifi_password);
     while (WiFi.status() != WL_CONNECTED) {
         delay(500);
@@ -27,6 +28,7 @@ bool connect(int timeout_s, const char* wifi_ssid, const char* wifi_password) {
 
 bool disconnect() {
     WiFi.disconnect(true);
+    WiFi.mode(WIFI_OFF);
     Serial.println("WiFi disconnected...");
     return true;
 }

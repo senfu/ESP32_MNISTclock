@@ -12,4 +12,4 @@ static const char* NTP_SERVER = "pool.ntp.org";
 // China is GMT+8
 static const int GMT_OFFSET_SEC = 8 * 3600;
 static const int DAYLIGHT_OFFSET_SEC = 0;
-
+static const int CONST_TIME_US = 1000000;

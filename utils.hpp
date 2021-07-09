@@ -6,6 +6,9 @@
  */
 
 #pragma once
+#include "time.h"
+#include "global.h"
+
 void printLocalTime() {
     struct tm timeinfo;
     if (!getLocalTime(&timeinfo)) {
@@ -13,4 +16,9 @@ void printLocalTime() {
         return;
     }
     Serial.println(&timeinfo, "%F %T %A");
+}
+
+void lightSleep(int sleep_s) {
+    esp_sleep_enable_timer_wakeup(sleep_s*CONST_TIME_US);
+    esp_light_sleep_start();
 }

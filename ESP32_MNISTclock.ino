@@ -20,5 +20,6 @@ void setup() {
 
 void loop() {
     printLocalTime();
-    delay(1000);
+    lightSleep(10);
+    Serial.println("Wake up...");
 }
