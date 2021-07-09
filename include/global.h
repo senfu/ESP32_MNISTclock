@@ -2,20 +2,20 @@
  * @Author: Li Junyan 
  * @Date: 2021-07-09 00:12:28 
  * @Last Modified by: Li Junyan
- * @Last Modified time: 2021-07-09 20:47:40
+ * @Last Modified time: 2021-07-10 01:19:16
  */
 
 #pragma once
 #include "WString.h"
 // WiFi configuration
-static const char* WIFI_SSID = "HONOR_LJY";
-static const char* WIFI_PASSWORD = "ljy886622";
+extern const char* WIFI_SSID;
+extern const char* WIFI_PASSWORD;
 // NTP server
-static const char* NTP_SERVER = "pool.ntp.org";
+extern const char* NTP_SERVER;
 // China is GMT+8
-static const int GMT_OFFSET_SEC = 8 * 3600;
-static const int DAYLIGHT_OFFSET_SEC = 0;
-static const int CONST_TIME_US = 1000000;
+extern const int GMT_OFFSET_SEC;
+extern const int DAYLIGHT_OFFSET_SEC;
+extern const int CONST_TIME_US;
 // API: https://www.mxnzp.com/
-static const String APP_ID = "ldmeflrgml3pimdp";
-static const String APP_SECRET = "L0l1dHFheDlibFc4aFR3a0ZLdng1Zz09";
+extern const String APP_ID;
+extern const String APP_SECRET;

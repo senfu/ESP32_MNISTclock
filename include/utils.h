@@ -8,6 +8,7 @@
 #pragma once
 #include <time.h>
 #include <cJSON.h>
+#include <Arduino.h>
 #include "global.h"
 
 void printLocalTime();
