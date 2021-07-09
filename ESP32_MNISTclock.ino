@@ -5,9 +5,9 @@
  * @Last Modified time: 2021-07-09 16:50:50
  */
 
-#include "utils.hpp"
-#include "wireless.h"
-#include "global.h"
+#include "include/utils.hpp"
+#include "include/wireless.h"
+#include "include/global.h"
 
 void setup() {
     Serial.begin(115200);

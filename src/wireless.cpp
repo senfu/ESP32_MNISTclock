@@ -5,7 +5,7 @@
  * @Last Modified time: 2021-07-09 16:53:42
  */
 
-#include "wireless.h"
+#include "../include/wireless.h"
 
 bool connect(int timeout_s, const char* wifi_ssid, const char* wifi_password) {
     auto start_time = millis();
