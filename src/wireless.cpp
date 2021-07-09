@@ -2,7 +2,7 @@
  * @Author: Li Junyan 
  * @Date: 2021-07-08 23:47:18 
  * @Last Modified by: Li Junyan
- * @Last Modified time: 2021-07-09 16:53:42
+ * @Last Modified time: 2021-07-09 20:46:35
  */
 
 #include "../include/wireless.h"
@@ -36,4 +36,16 @@ bool disconnect() {
 bool syncLocalTime() {
     configTime(GMT_OFFSET_SEC, DAYLIGHT_OFFSET_SEC, NTP_SERVER);
     Serial.println("Local time synced...");
+}
+
+char* getCityNameFromIP() {
+    HTTPClient http;
+    String url = "https://www.mxnzp.com/api/ip/self?app_id="+\
+                    APP_ID+"&app_secret="+APP_SECRET;
+    http.begin(url);
+    int httpCode = http.GET();
+    if (httpCode > 0) {
+        const String payload = http.getString();
+        return parseCityName(payload);
+    }
 }

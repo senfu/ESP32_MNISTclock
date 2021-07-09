@@ -1,13 +1,11 @@
 /*
  * @Author: Li Junyan 
- * @Date: 2021-07-09 00:12:11 
+ * @Date: 2021-07-09 20:45:56 
  * @Last Modified by: Li Junyan
- * @Last Modified time: 2021-07-09 16:52:57
+ * @Last Modified time: 2021-07-09 20:46:22
  */
 
-#pragma once
-#include "time.h"
-#include "global.h"
+#include "../include/utils.h"
 
 void printLocalTime() {
     struct tm timeinfo;
@@ -21,4 +19,8 @@ void printLocalTime() {
 void lightSleep(int sleep_s) {
     esp_sleep_enable_timer_wakeup(sleep_s*CONST_TIME_US);
     esp_light_sleep_start();
+}
+
+char* parseCityName(const String& jsonStr) {
+    return "aa";
 }

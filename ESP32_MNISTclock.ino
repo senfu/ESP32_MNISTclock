@@ -2,10 +2,10 @@
  * @Author: Li Junyan 
  * @Date: 2021-07-09 00:12:04 
  * @Last Modified by: Li Junyan
- * @Last Modified time: 2021-07-09 16:50:50
+ * @Last Modified time: 2021-07-09 20:46:31
  */
 
-#include "include/utils.hpp"
+#include "include/utils.h"
 #include "include/wireless.h"
 #include "include/global.h"
 
@@ -22,4 +22,5 @@ void loop() {
     printLocalTime();
     lightSleep(10);
     Serial.println("Wake up...");
+    char* cityName = getCityNameFromIP();
 }
