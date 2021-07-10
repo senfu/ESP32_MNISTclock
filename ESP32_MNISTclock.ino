@@ -19,8 +19,11 @@ void setup() {
 }
 
 void loop() {
-    printLocalTime();
     lightSleep(10);
     Serial.println("Wake up...");
+    printLocalTime();
     char* cityName = getCityNameFromIP();
+    Serial.print("City name: ");
+    Serial.println(cityName);
+    
 }

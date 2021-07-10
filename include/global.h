@@ -11,11 +11,13 @@
 extern const char* WIFI_SSID;
 extern const char* WIFI_PASSWORD;
 // NTP server
-extern const char* NTP_SERVER;
+extern const char* NTP_SERVER_1;
+extern const char* NTP_SERVER_2;
+extern const char* NTP_SERVER_3;
 // China is GMT+8
 extern const int GMT_OFFSET_SEC;
 extern const int DAYLIGHT_OFFSET_SEC;
 extern const int CONST_TIME_US;
 // API: https://www.mxnzp.com/
-extern const String APP_ID;
-extern const String APP_SECRET;
+extern const String ROLL_API_APP_ID;
+extern const String ROLL_API_APP_SECRET;

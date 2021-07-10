@@ -34,18 +34,27 @@ bool disconnect() {
 }
 
 bool syncLocalTime() {
-    configTime(GMT_OFFSET_SEC, DAYLIGHT_OFFSET_SEC, NTP_SERVER);
-    Serial.println("Local time synced...");
+    configTime(GMT_OFFSET_SEC, DAYLIGHT_OFFSET_SEC, \
+                NTP_SERVER_1, \
+                NTP_SERVER_2, \
+                NTP_SERVER_3);
+    Serial.printf("Local time syncing from three NTP server\n");
+    struct tm timeinfo;
+    while (time(NULL) < 1580000000)
+        yield();
+    Serial.println("\nLocal time synced...");
 }
 
 char* getCityNameFromIP() {
     HTTPClient http;
     String url = "https://www.mxnzp.com/api/ip/self?app_id="+\
-                    APP_ID+"&app_secret="+APP_SECRET;
+                    ROLL_API_APP_ID+"&app_secret="+ROLL_API_APP_SECRET;
     http.begin(url);
     int httpCode = http.GET();
     if (httpCode > 0) {
         const String payload = http.getString();
-        return parseCityName(payload);
+        Serial.println(payload.c_str());
+        return parseCityName(payload.c_str());
     }
+    return "FAILED";
 }

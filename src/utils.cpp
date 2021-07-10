@@ -17,10 +17,28 @@ void printLocalTime() {
 }
 
 void lightSleep(int sleep_s) {
+    Serial.println("Enter light sleep mode...");
+    delay(200);
     esp_sleep_enable_timer_wakeup(sleep_s*CONST_TIME_US);
     esp_light_sleep_start();
 }
 
-char* parseCityName(const String& jsonStr) {
-    return "aa";
+char* parseCityName(const char* jsonStr) {
+    cJSON *pJsonRoot = cJSON_Parse(jsonStr);
+    if (pJsonRoot) {
+        cJSON *pData = cJSON_GetObjectItem(pJsonRoot, "data");
+        if (pData) {
+            cJSON *pCity = cJSON_GetObjectItem(pData, "city");
+            if (pCity && cJSON_IsString(pCity)) {
+                return pCity->valuestring;
+            } else {
+                return "#IC";
+            }
+        } else {
+            return "#ID";
+        }
+    } else {
+        return "#IJ";
+    }
+    return "#??";
 }
