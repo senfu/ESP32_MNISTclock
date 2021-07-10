@@ -50,11 +50,10 @@ char* getCityNameFromIP() {
     String url = "https://www.mxnzp.com/api/ip/self?app_id="+\
                     ROLL_API_APP_ID+"&app_secret="+ROLL_API_APP_SECRET;
     http.begin(url);
-    int httpCode = http.GET();
-    if (httpCode > 0) {
+    while (int httpCode = http.GET() > 0) {
         const String payload = http.getString();
         Serial.println(payload.c_str());
         return parseCityName(payload.c_str());
     }
-    return "FAILED";
+    return "#??";
 }
