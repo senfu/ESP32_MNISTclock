@@ -12,7 +12,7 @@ bool connect(int timeout_s, const char* wifi_ssid, const char* wifi_password) {
     WiFi.mode(WIFI_STA);
     WiFi.begin(wifi_ssid, wifi_password);
     while (WiFi.status() != WL_CONNECTED) {
-        delay(500);
+        delay(1000);
         Serial.print(".");
         if ((millis()-start_time)/1000 >= timeout_s) {
             Serial.println();
@@ -50,10 +50,12 @@ char* getCityNameFromIP() {
     String url = "https://www.mxnzp.com/api/ip/self?app_id="+\
                     ROLL_API_APP_ID+"&app_secret="+ROLL_API_APP_SECRET;
     http.begin(url);
-    while (int httpCode = http.GET() > 0) {
-        const String payload = http.getString();
-        Serial.println(payload.c_str());
-        return parseCityName(payload.c_str());
+    int httpCode = http.GET();
+    while (httpCode <= 0) {
+        delay(2000);
+        httpCode = http.GET();
     }
-    return "#??";
+    const String payload = http.getString();
+    Serial.println(payload.c_str());
+    return parseCityName(payload.c_str());
 }

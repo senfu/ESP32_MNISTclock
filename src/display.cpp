@@ -10,7 +10,7 @@ UBYTE* initDisplay() {
     DEV_Module_Init();
     EPD_2IN13_V2_Init(EPD_2IN13_V2_FULL);
     EPD_2IN13_V2_Clear();
-    delay(2000);
+    delay(1000);
     // Create a new image cache
     UBYTE* canvas = NULL;
     UWORD Imagesize = ((EPD_2IN13_V2_WIDTH % 8 == 0) ? \
@@ -56,21 +56,39 @@ void displayTime(UBYTE* canvas, int hh, int mm) {
         update = true;
     }
     if (update) {
-        Paint_DrawCircle(55, 128, 3, BLACK, DOT_PIXEL_1X1, DRAW_FILL_FULL);
-        Paint_DrawCircle(70, 128, 3, BLACK, DOT_PIXEL_1X1, DRAW_FILL_FULL);
+        const int center = (TIME_X_START+TIME_X_START+TIME_WIDTH)/2;
+        const int center1 = (TIME_X_START+center)/2 + 5;
+        const int center2 = (TIME_X_START+TIME_WIDTH+center)/2 - 5;
+        const int centerY = (TIME_Y_START+TIME_Y_START+TIME_HEIGHT)/2;
+        Paint_DrawCircle(center1, centerY, 3, BLACK, DOT_PIXEL_1X1, \
+                            DRAW_FILL_FULL);
+        Paint_DrawCircle(center2, centerY, 3, BLACK, DOT_PIXEL_1X1, \
+                            DRAW_FILL_FULL);
         EPD_2IN13_V2_DisplayPart(canvas);
-        delay(500);
+        delay(300);
         Serial.println("Time updated...");
     }
     return;
 }
 
 void _updateHour(int hh) {
-    Paint_ClearWindows(35, 10, 35 + 56, 10 + 112, WHITE);
-    Paint_DrawImage(DIGIT_DATA_112x56+hh*112*56/8, 35, 10, 56, 112);
+    Paint_ClearWindows(TIME_X_START, TIME_Y_START, \
+                        TIME_X_START + TWO_DIGIT_WIDTH, \
+                        TIME_Y_START + TWO_DIGHT_HEIGHT, \
+                        WHITE);
+    Paint_DrawImage(DIGIT_DATA_112x56+hh*TWO_DIGIT_STORAGE_SIZE, \
+                    TIME_X_START, TIME_Y_START, \
+                    TWO_DIGIT_WIDTH, TWO_DIGHT_HEIGHT);
 }
 
 void _updateMinute(int mm) {
-    Paint_ClearWindows(35, 135, 35 + 56, 135 + 112, WHITE);
-    Paint_DrawImage(DIGIT_DATA_112x56+mm*112*56/8, 35, 135, 56, 112);
+    Paint_ClearWindows(TIME_X_START, \
+                        TIME_Y_START+TIME_HEIGHT-TWO_DIGHT_HEIGHT, \
+                        TIME_X_START + TWO_DIGIT_WIDTH, \
+                        TIME_Y_START+TIME_HEIGHT, \
+                        WHITE);
+    Paint_DrawImage(DIGIT_DATA_112x56+mm*TWO_DIGIT_STORAGE_SIZE, \
+                    TIME_X_START, \
+                    TIME_Y_START+TIME_HEIGHT-TWO_DIGHT_HEIGHT, \
+                    TWO_DIGIT_WIDTH, TWO_DIGHT_HEIGHT);
 }

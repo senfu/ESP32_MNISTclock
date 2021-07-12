@@ -7,6 +7,7 @@
 
 #pragma once
 #include "data.h"
+#include "global.h"
 #include <Arduino.h>
 #include <EPD.h>
 #include <GUI_Paint.h>

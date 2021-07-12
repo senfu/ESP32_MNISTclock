@@ -21,3 +21,11 @@ extern const int CONST_TIME_US;
 // API: https://www.mxnzp.com/
 extern const String ROLL_API_APP_ID;
 extern const String ROLL_API_APP_SECRET;
+// E-paper
+extern const int TIME_X_START;
+extern const int TIME_Y_START;
+extern const int TIME_WIDTH;
+extern const int TIME_HEIGHT;
+extern const int TWO_DIGIT_WIDTH;
+extern const int TWO_DIGHT_HEIGHT;
+extern const int TWO_DIGIT_STORAGE_SIZE;

@@ -42,7 +42,7 @@ void loop() {
     printLocalTime();
     struct tm timeinfo;
     getLocalTime(&timeinfo);
-    displayTime(canvas, timeinfo.tm_min, timeinfo.tm_sec);
+    displayTime(canvas, timeinfo.tm_hour, timeinfo.tm_min);
     // count --;
-    lightSleep(10);
+    // lightSleep(10);
 }
