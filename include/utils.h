@@ -14,3 +14,4 @@
 void printLocalTime();
 void lightSleep(int sleep_s);
 char* parseCityName(const char* jsonStr);
+char* parseCityID(const char* jsonStr);

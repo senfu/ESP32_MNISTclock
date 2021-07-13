@@ -12,6 +12,7 @@
 
 UBYTE* canvas = NULL;
 char* cityName = NULL;
+char* cityID = NULL;
 int count = 100;
 
 void setup() {
@@ -25,6 +26,9 @@ void setup() {
     cityName = getCityNameFromIP();
     Serial.print("City name: ");
     Serial.println(cityName);
+    cityID = getCityIDFromCityName(cityName);
+    Serial.printf("City ID: %s\n", cityID);
+    for(;;) {}
 }
 
 void loop() {

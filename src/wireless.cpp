@@ -56,6 +56,24 @@ char* getCityNameFromIP() {
         httpCode = http.GET();
     }
     const String payload = http.getString();
-    Serial.println(payload.c_str());
+    // Serial.println(payload.c_str());
     return parseCityName(payload.c_str());
+}
+
+char* getCityIDFromCityName(char* city_name) {
+    HTTPClient http;
+    String url = "https://geoapi.qweather.com/v2/city/lookup?"
+                    "location="+String("beijing")+\
+                    "&number=1"
+                    "&key="+WEATHER_API_KEY;
+    http.begin(url);
+    int httpCode = http.GET();
+    while (httpCode <= 0) {
+        delay(2000);
+        httpCode = http.GET();
+    }
+    const String payload_gzip = http.getString();
+    Serial.println(url);
+    Serial.println(payload_gzip);
+    return parseCityID(payload_gzip.c_str());
 }

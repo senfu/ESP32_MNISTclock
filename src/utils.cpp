@@ -45,3 +45,23 @@ char* parseCityName(const char* jsonStr) {
     }
     return "#??";
 }
+
+char* parseCityID(const char* jsonStr) {
+    cJSON *pJsonRoot = cJSON_Parse(jsonStr);
+    if (pJsonRoot) {
+        cJSON *pLocation = cJSON_GetObjectItem(pJsonRoot, "location");
+        if (pLocation) {
+            cJSON *pID = cJSON_GetObjectItem(pLocation, "id");
+            if (pID && cJSON_IsString(pID)) {
+                return pID->valuestring;
+            } else {
+                return "#II";
+            }
+        } else {
+            return "#IL";
+        }
+    } else {
+        return "#IJ";
+    }
+    return "#??";
+}

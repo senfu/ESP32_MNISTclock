@@ -21,6 +21,8 @@ extern const int CONST_TIME_US;
 // API: https://www.mxnzp.com/
 extern const String ROLL_API_APP_ID;
 extern const String ROLL_API_APP_SECRET;
+// Weather API: https://dev.qweather.com/
+extern const String WEATHER_API_KEY;
 // E-paper
 extern const int TIME_X_START;
 extern const int TIME_Y_START;

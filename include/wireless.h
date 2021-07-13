@@ -7,6 +7,7 @@
 
 #pragma once
 #include <HTTPClient.h>
+#include <rom/miniz.h>
 #include "WiFi.h"
 #include "global.h"
 #include "utils.h"
@@ -15,3 +16,4 @@ bool connect(int timeout_s, const char* wifi_ssid, const char* wifi_password);
 bool disconnect();
 bool syncLocalTime();
 char* getCityNameFromIP();
+char* getCityIDFromCityName(char* city_name);
