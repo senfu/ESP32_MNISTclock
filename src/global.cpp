@@ -7,10 +7,10 @@
 
 #include "../include/global.h"
 
-const char* WIFI_SSID = "Xiangyu1131";
-const char* WIFI_PASSWORD = "xy523067";
-// const char* WIFI_SSID = "HONOR_LJY";
-// const char* WIFI_PASSWORD = "ljy886622";
+// const char* WIFI_SSID = "Xiangyu1131";
+// const char* WIFI_PASSWORD = "xy523067";
+const char* WIFI_SSID = "HONOR_LJY";
+const char* WIFI_PASSWORD = "ljy886622";
 const char* NTP_SERVER_1 = "cn.ntp.org.cn";
 const char* NTP_SERVER_2 = "ntp.ntsc.ac.cn";
 const char* NTP_SERVER_3 = "time.windows.com";

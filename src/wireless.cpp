@@ -75,6 +75,13 @@ char* getCityIDFromCityName(char* city_name) {
     const String payload_gzip = http.getString();
     Serial.println(url);
     Serial.println(payload_gzip);
-    // TODO(Li Junyan): miniz decompression gzip
-    return parseCityID(payload_gzip.c_str());
+    char* payload = decompress(payload_gzip);
+    if (payload == NULL) {
+        Serial.println("Cannot decompress payload...");
+        Serial.println("Return Beijing for default...");
+        return "101010100";
+    }
+    Serial.println("Decompress OK...");
+    Serial.println(payload);
+    return parseCityID(payload);
 }
