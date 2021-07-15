@@ -7,7 +7,6 @@
 
 #pragma once
 #include <HTTPClient.h>
-#include <rom/miniz.h>
 #include "WiFi.h"
 #include "global.h"
 #include "utils.h"

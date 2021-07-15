@@ -63,7 +63,7 @@ char* getCityNameFromIP() {
 char* getCityIDFromCityName(char* city_name) {
     HTTPClient http;
     String url = "https://geoapi.qweather.com/v2/city/lookup?"
-                    "location="+String("beijing")+\
+                    "location="+String(urlCNEncode(city_name))+\
                     "&number=1"
                     "&key="+WEATHER_API_KEY;
     http.begin(url);

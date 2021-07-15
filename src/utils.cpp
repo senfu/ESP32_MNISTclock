@@ -7,6 +7,24 @@
 
 #include "../include/utils.h"
 
+char* urlCNEncode(char* str) {
+    const uint mask = 0xff;
+    const char hex[] = {'0', '1', '2', '3', '4', '5', '6', '7', '8', '9',
+                        'A', 'B', 'C', 'D', 'E', 'F'};
+    char* ret_str = (char*)calloc(sizeof(char), strlen(str)*3+1);
+    ret_str[strlen(str)*3] = 0x00;
+    for (int i=0; str[i] != '\0'; i++) {
+        ret_str[3*i] = '%';
+        ret_str[3*i+1] = hex[((str[i]&mask)/16)%16];
+        ret_str[3*i+2] = hex[(str[i]&mask)%16];
+    }
+    return ret_str;
+}
+
+char* decompress(char* str) {
+    mz_uncompress();
+}
+
 void printLocalTime() {
     struct tm timeinfo;
     if (!getLocalTime(&timeinfo)) {
@@ -65,3 +83,4 @@ char* parseCityID(const char* jsonStr) {
     }
     return "#??";
 }
+
