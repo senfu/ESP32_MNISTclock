@@ -12,8 +12,8 @@
 
 UBYTE* canvas = NULL;
 char* cityName = NULL;
-char* cityID = NULL;
 int count = 100;
+WeatherInfo* weatherInfoNow;
 
 void setup() {
     Serial.begin(115200);
@@ -24,11 +24,8 @@ void setup() {
     }
     syncLocalTime();
     cityName = getCityNameFromIP();
-    Serial.print("City name: ");
-    Serial.println(cityName);
-    cityID = getCityIDFromCityName(cityName);
-    Serial.printf("City ID: %s\n", cityID);
-    for(;;) {}
+    Serial.printf("city name:", cityName);
+    weatherInfoNow = getWeatherInfoFromCityName(cityName);
 }
 
 void loop() {

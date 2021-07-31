@@ -7,6 +7,19 @@
 
 #pragma once
 #include "WString.h"
+
+typedef struct HourlyData {
+    int diffTime;
+    int temp;
+    int icon;
+    int text;
+    int pop;
+};
+
+typedef struct WeatherInfo {
+    int pastTime;
+    HourlyData hourly[24];
+};
 // WiFi configuration
 extern const char* WIFI_SSID;
 extern const char* WIFI_PASSWORD;
@@ -18,11 +31,6 @@ extern const char* NTP_SERVER_3;
 extern const int GMT_OFFSET_SEC;
 extern const int DAYLIGHT_OFFSET_SEC;
 extern const int CONST_TIME_US;
-// API: https://www.mxnzp.com/
-extern const String ROLL_API_APP_ID;
-extern const String ROLL_API_APP_SECRET;
-// Weather API: https://dev.qweather.com/
-extern const String WEATHER_API_KEY;
 // E-paper
 extern const int TIME_X_START;
 extern const int TIME_Y_START;
@@ -31,3 +39,7 @@ extern const int TIME_HEIGHT;
 extern const int TWO_DIGIT_WIDTH;
 extern const int TWO_DIGHT_HEIGHT;
 extern const int TWO_DIGIT_STORAGE_SIZE;
+// API
+extern const char* GET_WEATHER_FROM_IP_URL;
+const String ROLL_API_APP_ID = "ldmeflrgml3pimdp";
+const String ROLL_API_APP_SECRET = "L0l1dHFheDlibFc4aFR3a0ZLdng1Zz09";

@@ -15,4 +15,4 @@ bool connect(int timeout_s, const char* wifi_ssid, const char* wifi_password);
 bool disconnect();
 bool syncLocalTime();
 char* getCityNameFromIP();
-char* getCityIDFromCityName(char* city_name);
+WeatherInfo* getWeatherInfoFromCityName(char* cityName);

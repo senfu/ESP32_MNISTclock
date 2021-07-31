@@ -9,13 +9,9 @@
 #include <time.h>
 #include <cJSON.h>
 #include <Arduino.h>
-#include "miniz.h"
 #include "global.h"
 
-
 char* urlCNEncode(char* str);
-char* decompress(String str);
 void printLocalTime();
 void lightSleep(int sleep_s);
 char* parseCityName(const char* jsonStr);
-char* parseCityID(const char* jsonStr);
